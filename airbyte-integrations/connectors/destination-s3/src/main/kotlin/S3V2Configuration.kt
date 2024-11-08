@@ -32,7 +32,10 @@ data class S3V2Configuration<T : OutputStream>(
 
     // Internal configuration
     override val objectStorageUploadConfiguration: ObjectStorageUploadConfiguration =
-        ObjectStorageUploadConfiguration(5L * 1024 * 1024),
+        ObjectStorageUploadConfiguration(
+            streamingUploadPartSize = 5 * 1024 * 1024,
+            maxNumConcurrentUploads = 4
+        ),
     override val recordBatchSizeBytes: Long = 200L * 1024 * 1024,
 ) :
     DestinationConfiguration(),

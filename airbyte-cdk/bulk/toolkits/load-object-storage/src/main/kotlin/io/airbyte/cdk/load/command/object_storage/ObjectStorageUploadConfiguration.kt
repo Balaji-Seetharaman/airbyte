@@ -4,7 +4,10 @@
 
 package io.airbyte.cdk.load.command.object_storage
 
-data class ObjectStorageUploadConfiguration(val streamingUploadPartSize: Long)
+data class ObjectStorageUploadConfiguration(
+    val streamingUploadPartSize: Long,
+    val maxNumConcurrentUploads: Int
+)
 
 interface ObjectStorageUploadConfigurationProvider {
     val objectStorageUploadConfiguration: ObjectStorageUploadConfiguration
